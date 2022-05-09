@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Payment ID Generator for Parsec (PARS) Cryptocurrency - Secure, and Private">
+<title>Payment ID Generator for Parsec</title>
+
+<link rel="shortcut icon" href="https://parsecnode.com/images/ico/favicon.ico">
+
+<!-- ========================= CSS here ========================= -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
+<style type="text/css">
+	@media screen {
+		.breath {
+			margin: 30px auto;
+		}
+		
+		.navbar-default {
+			background-image: linear-gradient(125deg,#990000 0%, #CC0000 34%, #D83232 100%);
+		}
+		.navbar-default .navbar-brand {
+			color: #D83232;
+		}
+		.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+			color: #FFFFFF;
+			background-color: transparent;
+		}
+		.navbar-default .navbar-brand:hover #coinIcon, .navbar-default .navbar-brand:focus #coinIcon {
+			border: solid 2px #FFFFFF;
+		}
+		
+		#coinIcon{
+			text-transform: capitalize;
+			width: 40px;
+			height: 40px;
+			font-size: 30px;
+			line-height: 35px;
+			display: inline-block;
+			vertical-align: middle;
+			border: solid 2px #FFF200;
+			background: #FF0000;
+			color: #FFF200;
+			border-radius: 50%;
+			text-align: center;
+			margin: -10px 0;
+			padding: 0 2px 0 0;
+		}
+		
+		#uah_price {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+		
+		.splash {
+			background-color: #FB9F16;
+			background: #FB9F16;
+			background-image: linear-gradient(165deg,#55C4F7 0%,#D83232 40%);
+			background-size: cover;
+			background-attachment: fixed;
+			color: #fff;
+			text-align: center;
+		}
+		
+		.banner {
+			background: #235382 url(/images/210658.jpg) center center no-repeat;
+			background-size: cover;
+			color: #fff;
+			text-align: center;
+		}
+		
+		.banner .banner-content {
+			padding: 15em 0 15em;
+			background-color: #CC0000;
+			background-image: linear-gradient(165deg,#0E073F 0%, #FB9F16 43%, #FFFF00 100%);
+			background-size: cover;
+			background-attachment: fixed;		
+		}
+		
+		.splash .parsec {
+			padding: 9em 0 9em;
+			overflow: hidden;
+			position: relative;
+			background-color: #FF0000;
+			background-image: linear-gradient(175deg,#0E073F 50%, #0057B8 75%, #0AADFD 100%);
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-attachment: fixed;
+		}
+		
+		.splash h1, 
+		.splash h2, 
+		.splash h3 {
+		color: white;
+		text-align: center;
+		}
+	}
+</style>	
+<script src="https://kit.fontawesome.com/2058fca1c3.js"></script>
+
+</head>
+<body>
+
+<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://parsecnode.com/" style="">
+		
+					<svg style="display: inline-block; vertical-align: text-top; margin-top: -14px;" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 2500000 2500000" width="48px" height="48px" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<g>
+							<circle fill="#000000" cx="1250000" cy="1250000" r="1214062" render-order="1">
+						</circle></g>
+						<g render-order="2">
+							<path fill="#D83232" d=""></path>
+						</g>
+					</svg>
+		   PARSEC NODE</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+<!--// Navbar Ends-->
+
+<div class="splash banner">
+  <div class="banner-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+				<h1 class="title">Parsec Payment ID Generator</h1>
+		    </div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<div id="request" class="highlight">
+   <div class="container">
+	  <div class="panel panel-default" style="margin-top: -100px;">
+        <div class="panel-body"> 
+           <div class="row">
+             <div class="col-md-offset-2 col-md-8">
+                <article class="page-content">
+					<div class="breath">
+						<p>Press the button to generate random PaymentID or enter Payment ID to decode it</p>
+						<div class="form-group">
+						  <input class="form-control input-lg" type="text" id="paymentid" maxlength="64">
+						</div>
+						<button onclick="generate()" class="btn btn-primary btn-lg">Generate PaymentID</button>
+						<button onclick="decode()" class="btn btn-primary btn-lg">Decode PaymentID</button>
+					</div>
+					<div class="breath">
+						<p>Enter short memo to encode it (ASCII only)</p>
+						<div class="form-group">
+						  <input class="form-control input-lg" type="text" id="text2encode" maxlength="32">
+						</div>
+						<button onclick="encode()" class="btn btn-primary btn-lg">Encode in PaymentID</button>		
+					</div>
+				
+					<div class="breath">
+						<div class="breath">
+							<p>Payment ID is optional transaction attachment that is usually used to identify transactions. Because of anonymity of Parsec transactions, without Payment ID you will not be able to distinguish them. You can generate random Payment IDs and give them to each user who is to send you some Parsec (PARS). This way you can tie payments to users.</p>
+							
+							<p>You can also encode some short text into Payment ID.</p>
+						</div>
+					</div>
+                </article>	  
+             </div>
+          </div>
+        </div>
+     </div>
+   </div>
+</div>
+
+<div class="splash small" id="footer">
+  <div class="Parsec">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+			<p>&copy; 2022 Parsec Node</p>
+		  </div>
+          <div class="col-lg-4">
+			<p>e-mail: contact@parsecnode.com</p>
+		  </div>
+          <div class="col-lg-4">
+			<p>Parsec Simple Payment ID Generator</p>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+
+<!-- ========================= JS here ========================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+function generate() {
+	function generateHexString(length) {
+  var ret = "";
+  while (ret.length < length) {
+	ret += Math.random().toString(16).substring(2);
+  }
+  return ret.substring(0,length);
+}
+// PaymentID
+ document.getElementById("paymentid").value = generateHexString(64);
+}
+
+function encode() {
+	var toenconde = document.getElementById("text2encode").value;
+	if (toenconde.length < 32) {
+		var padding = Array(32).join('0');
+		toenconde = pad(padding,toenconde,true);
+	}
+	document.getElementById("paymentid").value = a2hex(toenconde);
+}
+function decode() {
+	var decoded = hex2a(document.getElementById("paymentid").value);
+	document.getElementById("text2encode").value = decoded;
+}
+
+function pad(pad, str, padLeft) {
+  if (typeof str === 'undefined') 
+    return pad;
+  if (padLeft) {
+    return (pad + str).slice(-pad.length);
+  } else {
+    return (str + pad).substring(0, pad.length);
+  }
+}
+
+function a2hex(str) {
+  var arr = [];
+  for (var i = 0, l = str.length; i < l; i ++) {
+	var hex = Number(str.charCodeAt(i)).toString(16);
+	arr.push(hex);
+  }
+  return arr.join('');
+}
+
+function hex2a(hexx) {
+	var hex = hexx.toString();//force conversion
+	var str = '';
+	for (var i = 0; i < hex.length; i += 2)
+		str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+	return str;
+}
+</script>
+
+</body>
+</html>
